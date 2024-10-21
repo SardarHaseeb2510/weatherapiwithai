@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside
+            class="w-64 bg-slate-800/50 backdrop-blur-lg border-r border-slate-700/50 text-white p-6 flex flex-col justify-between h-screen fixed">
+            <div class="space-y-8">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-cloud-sun text-3xl text-blue-400"></i>
+                    <span
+                        class="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text">
+                        Weather
+                    </span>
+                </div>
+                <nav>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="dashboard.html"
+                                class="flex items-center gap-2 rounded-lg py-2.5 px-4 bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-blue-500/20">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="table.html"
+                                class="flex items-center gap-2 rounded-lg py-2.5 px-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-blue-500/20">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Tables
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64">
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <section class="text-center mb-12">
+                    <h1
+                        class="text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 text-transparent bg-clip-text">
+                        Weather Dashboard
+                    </h1>
+                    <div class="flex justify-center">
+                        <div class="relative w-96">
+                            <input type="text" id="cityInput" placeholder="Enter city name"
+                                class="w-full px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-white placeholder-slate-400 transition-all duration-200" />
+                            <button id="get-weather-btn" onclick="getWeatherData()"
+                                class="absolute right-2 top-2 px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-full transition-all duration-200 shadow-lg shadow-blue-500/20">
+                                <i class="fas fa-search mr-2"></i>
+                                Get Weather
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Weather Display Sections -->
+                <div class="flex justify-center items-center flex-col">
+                    <div id="selectedWeather"
+                        class="w-full max-w-3xl p-8 mb-8 rounded-2xl bg-slate-800/50 backdrop-blur-lg border border-slate-700/50 shadow-xl text-white">
+                    </div>
+
+                    <div id="weatherForNext5days"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full max-w-6xl">
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="canvas-wrapper mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-blue-900/80 to-blue-800/50 backdrop-blur-lg border border-blue-700/30 shadow-xl hover:shadow-blue-500/20 transition-all duration-300">
+                        <h3 class="text-blue-300 font-semibold mb-4">Vertical Chart</h3>
+                        <canvas id="verticalChart" class="h-64 w-full"></canvas>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-blue-900/80 to-blue-800/50 backdrop-blur-lg border border-blue-700/30 shadow-xl hover:shadow-blue-500/20 transition-all duration-300">
+                        <h3 class="text-blue-300 font-semibold mb-4">Doughnut Chart</h3>
+                        <canvas id="doughnutChart" class="h-64 w-full"></canvas>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-blue-900/80 to-blue-800/50 backdrop-blur-lg border border-blue-700/30 shadow-xl hover:shadow-blue-500/20 transition-all duration-300">
+                        <h3 class="text-blue-300 font-semibold mb-4">Line Chart</h3>
+                        <canvas id="lineChart" class="h-64 w-full"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

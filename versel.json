@@ -1,6 +1,22 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/table.html" }
-    ]
-  }
-  
+  "version": 2,
+  "name": "Weather_Dashboard",
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/dashboard.html"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/dashboard.html"
+    },
+    {
+      "src": "/tables",
+      "dest": "/table.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
